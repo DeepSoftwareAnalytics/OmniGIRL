@@ -29,7 +29,7 @@ To evaluate the GPT-4o model:
 - **Oracle Retrieval method**:
   ```bash
   cd omnigirl/harness
-  bash scripts/Eval_GPT4o_Oracle.sh
+  bash scripts/Eval_GPT4o_OracleRetrieval.sh
   ```
 
 ### DeepSeek-V2.5
@@ -45,7 +45,7 @@ To evaluate the DeepSeek model:
 - **Oracle Retrieval method**:
   ```bash
   cd omnigirl/harness
-  bash scripts/Eval_DeepSeek_Oracle.sh
+  bash scripts/Eval_DeepSeek_OracleRetrieval.sh
   ```
 
 ### Claude-3.5-Sonnet-2024-06-25
@@ -61,6 +61,6 @@ To evaluate the Claude model:
 - **Oracle Retrieval method**:
   ```bash
   cd omnigirl/harness
-  bash scripts/Eval_Claude_Oracle.sh
+  bash scripts/Eval_Claude_OracleRetrieval.sh
   ```
 
