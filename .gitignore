@@ -1,0 +1,69 @@
+# Python cache files
+**/__pycache__/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Conda environment files
+.env/
+.venv/
+
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Virtual environment
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# IDE / Editor configurations
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# macOS files
+.DS_Store
+
+# Log files
+*.log
+
+# Unit test / coverage reports
+.coverage
+.tox/
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+
+# Pytest cache
+.pytest_cache/
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pylint
+.pylint.d/
+
+# pyright
+.pyright/
+
+/omnigirl/harness/run_instance_logs/image_build_logs
+/omnigirl/harness/data
+/omnigirl/harness/run
+/omnigirl/harness/run_instance_logs
