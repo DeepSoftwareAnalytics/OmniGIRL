@@ -14,9 +14,8 @@ pip install -r requirements.txt
 
 ## 🚀 Running Evaluations
 
-We provide evaluation results for three models—**GPT-4o-2024-08-06**, **DeepSeek-V2.5**, and **Claude-3.5-Sonnet-2024-06-25**—using two methods: **AgentlessX** and **Oracle Retrieval**. To access these results, execute the following scripts:
-
 ### Evaluation on full set of OmniGIRL
+We provide evaluation results for three models—**GPT-4o-2024-08-06**, **DeepSeek-V2.5**, and **Claude-3.5-Sonnet-2024-06-25**—using two methods: **AgentlessX** and **Oracle Retrieval**. To access these results, execute the following scripts:
 
 #### GPT-4o-2024-08-06
 
@@ -70,16 +69,7 @@ To evaluate the Claude model:
 
 ### OmniGIRL - Visual Input Subset Evaluation
 
-In addition to the full OmniGIRL set, we provide evaluation results for a subset with **visual input data**. This subset contains tasks requiring multi-modal analysis, combining **text-only** and **image-augmented text** scenarios. The experiments were conducted using **GPT-4o-2024-08-06** and **Claude-3.5-Sonnet-2024-06-25**, evaluated with both the **AgentlessX** and **Oracle Retrieval** methods. Each experiment was repeated **three times** to ensure robustness.
-
-#### Experiment Scenarios
-
-1. **Text Only**: Evaluates performance with purely textual inputs.
-2. **Text & Image**: Evaluates performance with a combination of text and accompanying images.
-3. **Image-Augmented Text**: Evaluates performance on text inputs enhanced with image-based context.
-
-
-Follow the steps below to run the experiments for each model and evaluation method:
+In addition to the full OmniGIRL set, we provide evaluation results for a subset with **visual input data**. This subset contains tasks requiring multi-modal analysis, combining **text-only** and **image-augmented text** scenarios. The experiments were conducted using **GPT-4o-2024-08-06** and **Claude-3.5-Sonnet-2024-06-25**, evaluated with both the **AgentlessX** and **Oracle Retrieval** methods. Each experiment was repeated **three times** to ensure robustness.Follow the steps below to run the experiments for each model and evaluation method:
 
 #### Claude-3.5-Sonnet-2024-06-25
 
