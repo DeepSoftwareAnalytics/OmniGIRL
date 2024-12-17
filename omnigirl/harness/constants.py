@@ -43,6 +43,7 @@ class TestStatus(Enum):
     PASSED = "PASSED"
     SKIPPED = "SKIPPED"
     ERROR = "ERROR"
+    XFAIL = "XFAIL"
 
 
 
@@ -1044,26 +1045,18 @@ MAP_VERSION_TO_INSTALL_SKLEARN.update(
             "install": "python -m pip install -v --no-use-pep517 --no-build-isolation -e .",
             "pip_packages": ["cython", "setuptools", "numpy", "scipy"],
         }
-        for k in ['1.0','1.1','1.2',"1.3", "1.4"]
+        for k in ["1.3", "1.4",'1.5','1.6']
     }
 )
-MAP_VERSION_TO_INSTALL_SKLEARN.update(
-    {
-        k: {
-            "python": "3.9",
-            "packages": "numpy scipy cython setuptools pytest pandas matplotlib joblib threadpoolctl",
-            "install": "python -m pip install  -v --no-use-pep517 --no-build-isolation -e .",
-            "pip_packages": ["cython", "setuptools", "numpy", "scipy"],
-        }
-        for k in ['1.5','1.6']
-    }
-)
+
+
 MAP_VERSION_TO_INSTALL_FLASK = {
     "2.0": {
         "python": "3.9",
         "packages": "requirements.txt",
         "install": "python -m pip install -e .",
         "pip_packages": [
+            "setuptools==70.0.0",
             "Werkzeug==2.3.7",
             "Jinja2==3.0.1",
             "itsdangerous==2.1.2",
@@ -1076,6 +1069,7 @@ MAP_VERSION_TO_INSTALL_FLASK = {
         "packages": "requirements.txt",
         "install": "python -m pip install -e .",
         "pip_packages": [
+            "setuptools==70.0.0",
             "click==8.1.3",
             "itsdangerous==2.1.2",
             "Jinja2==3.1.2",
@@ -1091,6 +1085,7 @@ MAP_VERSION_TO_INSTALL_FLASK.update(
             "packages": "requirements.txt",
             "install": "python -m pip install -e .",
             "pip_packages": [
+                "setuptools==70.0.0",
                 "click==8.1.3",
                 "itsdangerous==2.1.2",
                 "Jinja2==3.1.2",
@@ -1098,7 +1093,7 @@ MAP_VERSION_TO_INSTALL_FLASK.update(
                 "Werkzeug==2.3.7",
             ],
         }
-        for k in ["2.2", "2.3"]
+        for k in ["2.2", "2.3",'3.0','3.1']
     }
 )
 MAP_VERSION_TO_INSTALL_DJANGO = {
@@ -1232,7 +1227,7 @@ MAP_VERSION_TO_INSTALL_SEABORN.update(
                 "zipp==3.16.2",
             ],
         }
-        for k in ["0.12", "0.13"]
+        for k in ["0.12", "0.13",'0.14']
     }
 )
 MAP_VERSION_TO_INSTALL_PYTEST = {
@@ -1740,7 +1735,7 @@ MAP_VERSION_TO_INSTALL_PVLIB = {
     for k in ["0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7", "0.8", "0.9"]
 }
 MAP_VERSION_TO_INSTALL_PYDICOM = {
-    k: {"python": "3.6", "install": "python -m pip install -e .", "packages": "numpy"}
+    k: {"python": "3.6", "install": "python -m pip install -e .", "packages": "numpy","pip_packages": ["pytest"],}
     for k in [
         "1.0",
         "1.1",

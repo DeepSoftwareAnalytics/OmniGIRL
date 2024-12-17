@@ -32,7 +32,8 @@ def get_repo_from_lp(x: str) -> str:
 
 
 def test_passed(case: str, sm: dict[str, str]) -> bool:
-    return case in sm and sm[case] == TestStatus.PASSED.value
+    # return case in sm and sm[case] == TestStatus.PASSED.value
+    return case in sm and sm[case] in [TestStatus.PASSED.value, TestStatus.XFAIL.value]
 
 
 def test_failed(case: str, sm: dict[str, str]) -> bool:

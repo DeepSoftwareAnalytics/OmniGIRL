@@ -378,7 +378,8 @@ def make_run_report(
         predictions: dict,
         full_dataset: list,
         client: docker.DockerClient,
-        run_id: str
+        run_id: str,
+        reports_dir: str
     ):
     """
     Make a final evaluation and run report of the instances that have been run.
@@ -482,6 +483,9 @@ def make_run_report(
         + f".{run_id}"
         + ".json"
     )
+    reports_dir = Path(reports_dir) 
+    reports_dir.mkdir(parents=True, exist_ok=True)
+    report_file = reports_dir / report_file
     with open(report_file, "w") as f:
         print(json.dumps(report, indent=4), file=f)
     print(f"Report written to {report_file}")
@@ -552,6 +556,7 @@ def main(
         run_id: str,
         timeout: int,
         version_spec: str,
+        reports_dir: str,
     ):
     """
     Run evaluation harness for the given dataset and predictions.
@@ -594,7 +599,7 @@ def main(
 
     # clean images + make final report
     clean_images(client, existing_images, cache_level, clean)
-    make_run_report(predictions, full_dataset, client, run_id)
+    make_run_report(predictions, full_dataset, client, run_id, reports_dir)
 
 
 if __name__ == "__main__":
@@ -626,6 +631,9 @@ if __name__ == "__main__":
     parser.add_argument("--run_id", type=str, required=True, help="Run ID - identifies the run")
     parser.add_argument(
         "--version_spec", type=str, default="all", help="version for specficcation"
+        )
+    parser.add_argument(
+        "--reports_dir", type=str, default="reports", help="directory for saving reports"
         )
     args = parser.parse_args()
 
