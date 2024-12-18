@@ -566,12 +566,21 @@ def make_eval_script_list(instance, install, env_name, repo_directory, base_comm
                 reset_tests_command,  # Revert tests after done, leave the repo in the same state as before
             ]
         else:
-            eval_commands += [
-                reset_tests_command,
-                apply_test_patch_command,
-                test_command,
-                reset_tests_command,  # Revert tests after done, leave the repo in the same state as before
-            ]
+            if instance['instance_id'] in ['iamkun__dayjs-1003','iamkun__dayjs-1015','iamkun__dayjs-1054','iamkun__dayjs-1160','iamkun__dayjs-1161','iamkun__dayjs-1164','iamkun__dayjs-987','iamkun__dayjs-998','iamkun__dayjs-994']:
+                eval_commands += [
+                    reset_tests_command,
+                    apply_test_patch_command,
+                    "sed -i 's/MockDate\.set(new Date())/MockDate.set(\"2024-09-01T00:00:00Z\")/' test/plugin/timezone.test.js",
+                    test_command,
+                    reset_tests_command,  # Revert tests after done, leave the repo in the same state as before
+                ]
+            else:
+                eval_commands += [
+                    reset_tests_command,
+                    apply_test_patch_command,
+                    test_command,
+                    reset_tests_command,  # Revert tests after done, leave the repo in the same state as before
+                ]
     elif 'java' in install:
         repo_test_command = MAP_REPO_TO_TEST_FRAMEWORK[instance["repo"]][instance["version"]]
        

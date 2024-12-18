@@ -181,24 +181,24 @@ MAP_VERSION_TO_INSTALL_DAYJS.update(  {
 
   
     for k in [
-        "1.9"
+       '1.8', "1.9"
         ]
 })
 
-MAP_VERSION_TO_INSTALL_DAYJS.update(  {
-    k: {
+# MAP_VERSION_TO_INSTALL_DAYJS.update(  {
+#     k: {
 
-    "nodejs": "12.20.0",
+#     "nodejs": "12.20.0",
 
-        'setup_command':['npm install']
+#         'setup_command':['npm install']
       
-    }
+#     }
 
 
-    for k in [
-        "1.8"
-        ]
-})
+#     for k in [
+#         "1.8"
+#         ]
+# })
 
 
 MAP_VERSION_TO_INSTALL_BABEL = {
@@ -1833,7 +1833,7 @@ MAP_REPO_TO_TEST_FRAMEWORK = {
         )
         for k in MAP_VERSION_TO_INSTALL_ASSERTJ.keys()
     },
-    'iamkun/dayjs': {k: "npm run test -- " for k in MAP_VERSION_TO_INSTALL_DAYJS.keys()},
+    'iamkun/dayjs': {k: " npm run test -- " for k in MAP_VERSION_TO_INSTALL_DAYJS.keys()},
     'babel/babel': {k: "make build && yarn jest " for k in MAP_VERSION_TO_INSTALL_BABEL.keys()},
     'jestjs/jest': {k:'yarn build && yarn jest'  for k in MAP_VERSION_TO_INSTALL_JEST.keys()},
     'webpack/webpack':{k:'yarn jest'  for k in MAP_VERSION_TO_INSTALL_WEBPACK.keys()},
