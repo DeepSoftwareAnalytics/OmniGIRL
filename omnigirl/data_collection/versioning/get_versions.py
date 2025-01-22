@@ -111,8 +111,6 @@ def get_version(instance, is_build=False, path_repo=None):
             return version
         if version == None and instance['repo']=='tqdm/tqdm':
             return 'get_version'
-        if version == None and instance['repo']=='urllib3/urllib3':
-            return 'get_version'
     return version
 
 
