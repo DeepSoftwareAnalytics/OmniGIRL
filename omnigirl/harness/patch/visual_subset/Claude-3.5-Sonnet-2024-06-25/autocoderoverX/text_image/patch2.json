@@ -1,0 +1,52 @@
+[
+    {
+        "instance_id": "tailwindlabs__tailwindcss-7102",
+        "model_name_or_path": "claude-3-5-sonnet-20240620",
+        "model_patch": "diff --git a/src/corePlugins.js b/src/corePlugins.js\nindex ced2be21..f24889ee 100644\n--- a/src/corePlugins.js\n+++ b/src/corePlugins.js\n@@ -527,6 +527,14 @@ export let corePlugins = {\n       '.border-collapse': { 'border-collapse': 'collapse' },\n       '.border-separate': { 'border-collapse': 'separate' },\n     })\n+\n+    addUtilities({\n+      '.border-spacing-0': { 'border-spacing': '0' },\n+      '.border-spacing-1': { 'border-spacing': '1px' },\n+      '.border-spacing-2': { 'border-spacing': '2px' },\n+      '.border-spacing-4': { 'border-spacing': '4px' },\n+      '.border-spacing-8': { 'border-spacing': '8px' }, // Example values, adjust as needed\n+    })\n   },\n \n   transformOrigin: createUtilityPlugin('transformOrigin', [['origin', ['transformOrigin']]]),\n"
+    },
+    {
+        "instance_id": "iamkun__dayjs-2532",
+        "model_name_or_path": "claude-3-5-sonnet-20240620",
+        "model_patch": "diff --git a/src/index.js b/src/index.js\nindex 061ade1..8e43540 100644\n--- a/src/index.js\n+++ b/src/index.js\n@@ -227,33 +227,38 @@ class Dayjs {\n   }\n \n   add(number, units) {\n-    number = Number(number) // eslint-disable-line no-param-reassign\n-    const unit = Utils.p(units)\n-    const instanceFactorySet = (n) => {\n-      const d = dayjs(this)\n-      return Utils.w(d.date(d.date() + Math.round(n * number)), this)\n-    }\n-    if (unit === C.M) {\n-      return this.set(C.M, this.$M + number)\n-    }\n-    if (unit === C.Y) {\n-      return this.set(C.Y, this.$y + number)\n-    }\n-    if (unit === C.D) {\n-      return instanceFactorySet(1)\n-    }\n-    if (unit === C.W) {\n-      return instanceFactorySet(7)\n+      number = Number(number) // eslint-disable-line no-param-reassign\n+      const unit = Utils.p(units)\n+      const instanceFactorySet = (n) => {\n+        const d = dayjs(this)\n+        return Utils.w(d.date(d.date() + Math.round(n * number)), this)\n+      }\n+      if (unit === C.M) {\n+        return this.set(C.M, this.$M + number)\n+      }\n+      if (unit === C.Y) {\n+        return this.set(C.Y, this.$y + number)\n+      }\n+      if (unit === C.D) {\n+        return instanceFactorySet(1)\n+      }\n+      if (unit === C.W) {\n+        return instanceFactorySet(7)\n+      }\n+      const step = {\n+        [C.MIN]: C.MILLISECONDS_A_MINUTE,\n+        [C.H]: C.MILLISECONDS_A_HOUR,\n+        [C.S]: C.MILLISECONDS_A_SECOND\n+      }[unit] || 1 // ms\n+  \n+  \n+      if (this.$x && this.$x.$offset === 0 && this.utcMode()) {\n+          return Utils.w(this.$d.getTime(), this);\n+      }\n+  \n+      const nextTimeStamp = this.$d.getTime() + (number * step)\n+      return Utils.w(nextTimeStamp, this)\n     }\n-    const step = {\n-      [C.MIN]: C.MILLISECONDS_A_MINUTE,\n-      [C.H]: C.MILLISECONDS_A_HOUR,\n-      [C.S]: C.MILLISECONDS_A_SECOND\n-    }[unit] || 1 // ms\n-\n-    const nextTimeStamp = this.$d.getTime() + (number * step)\n-    return Utils.w(nextTimeStamp, this)\n-  }\n \n   subtract(number, string) {\n     return this.add(number * -1, string)\n"
+    },
+    {
+        "instance_id": "webpack__webpack-15454",
+        "model_name_or_path": "claude-3-5-sonnet-20240620",
+        "model_patch": "diff --git a/lib/BannerPlugin.js b/lib/BannerPlugin.js\nindex 81b765831..be0a80d61 100644\n--- a/lib/BannerPlugin.js\n+++ b/lib/BannerPlugin.js\n@@ -79,13 +79,12 @@ class BannerPlugin {\n \t\t);\n \n \t\tcompiler.hooks.compilation.tap(\"BannerPlugin\", compilation => {\n-\t\t\tcompilation.hooks.processAssets.tap(\n+\t\t\tcompilation.hooks.optimizeChunkAssets.tap(\n \t\t\t\t{\n-\t\t\t\t\tname: \"BannerPlugin\",\n-\t\t\t\t\tstage: Compilation.PROCESS_ASSETS_STAGE_ADDITIONS\n+\t\t\t\t\tname: \"BannerPlugin\"\n \t\t\t\t},\n-\t\t\t\t() => {\n-\t\t\t\t\tfor (const chunk of compilation.chunks) {\n+\t\t\t\tchunks => {\n+\t\t\t\t\tfor (const chunk of chunks) {\n \t\t\t\t\t\tif (options.entryOnly && !chunk.canBeInitial()) {\n \t\t\t\t\t\t\tcontinue;\n \t\t\t\t\t\t}\n"
+    },
+    {
+        "instance_id": "webpack__webpack-14782",
+        "model_name_or_path": "claude-3-5-sonnet-20240620",
+        "model_patch": "diff --git a/lib/sharing/ConsumeSharedRuntimeModule.js b/lib/sharing/ConsumeSharedRuntimeModule.js\nindex 9a868f4f7..b1a622dc2 100644\n--- a/lib/sharing/ConsumeSharedRuntimeModule.js\n+++ b/lib/sharing/ConsumeSharedRuntimeModule.js\n@@ -317,7 +317,7 @@ class ConsumeSharedRuntimeModule extends RuntimeModule {\n \t\t\t\t\t\t\t\t\t\t])};`,\n \t\t\t\t\t\t\t\t\t\t\"try {\",\n \t\t\t\t\t\t\t\t\t\tTemplate.indent([\n-\t\t\t\t\t\t\t\t\t\t\t\"var promise = moduleToHandlerMapping[id]();\",\n+\t\t\t\t\t\t\t\t\t\t\t\"var promise = moduleToHandlerMapping[id](id);\", // Pass moduleId\n \t\t\t\t\t\t\t\t\t\t\t\"if(promise.then) {\",\n \t\t\t\t\t\t\t\t\t\t\tTemplate.indent(\n \t\t\t\t\t\t\t\t\t\t\t\t\"promises.push(installedModules[id] = promise.then(onFactory)['catch'](onError));\"\n"
+    },
+    {
+        "instance_id": "tailwindlabs__tailwindcss-4260",
+        "model_name_or_path": "claude-3-5-sonnet-20240620",
+        "model_patch": "diff --git a/src/jit/lib/expandApplyAtRules.js b/src/jit/lib/expandApplyAtRules.js\nindex 13881924..038ebb69 100644\n--- a/src/jit/lib/expandApplyAtRules.js\n+++ b/src/jit/lib/expandApplyAtRules.js\n@@ -33,12 +33,14 @@ function buildApplyCache(applyCandidates, context) {\n // TODO: Apply `!important` stuff correctly instead of just skipping it\n function extractApplyCandidates(params) {\n   let candidates = params.split(/[\\s\\t\\n]+/g)\n+  let important = false\n \n   if (candidates[candidates.length - 1] === '!important') {\n-    return [candidates.slice(0, -1), true]\n+    important = true\n+    candidates.pop()\n   }\n \n-  return [candidates, false]\n+  return [candidates, important]\n }\n \n function partitionApplyParents(root) {\n"
+    },
+    {
+        "instance_id": "tqdm__tqdm-535",
+        "model_name_or_path": "claude-3-5-sonnet-20240620",
+        "model_patch": "diff --git a/tqdm/_tqdm.py b/tqdm/_tqdm.py\nindex 04b2961..e044a1a 100755\n--- a/tqdm/_tqdm.py\n+++ b/tqdm/_tqdm.py\n@@ -739,6 +739,10 @@ class tqdm(object):\n             self.pos = self._get_free_pos(self)\n             self._instances.remove(self)\n             self.n = initial\n+            if total is not None:\n+                self.total = total\n+            else:\n+                self.total = 0\n             return\n \n         if kwargs:\n"
+    },
+    {
+        "instance_id": "tailwindlabs__tailwindcss-7665",
+        "model_name_or_path": "claude-3-5-sonnet-20240620",
+        "model_patch": "diff --git a/src/util/color.js b/src/util/color.js\nindex aa21d668..18429c58 100644\n--- a/src/util/color.js\n+++ b/src/util/color.js\n@@ -40,6 +40,16 @@ export function parseColor(value) {\n     }\n   }\n \n+  let cssVarMatch = value.match(/^(rgb|hsl)a?\\(\\s*var\\(\\s*(--[a-zA-Z0-9-_]+)\\s*\\)\\s*(?:\\/\\s*([0-9.]+)\\s*)?\\)$/i)\n+  if (cssVarMatch) {\n+      return {\n+        mode: cssVarMatch[1],\n+        variable: cssVarMatch[2],\n+        alpha: cssVarMatch[3],\n+      }\n+  }\n+\n+\n   let rgbMatch = value.match(RGB)\n \n   if (rgbMatch !== null) {\n@@ -63,7 +73,10 @@ export function parseColor(value) {\n   return null\n }\n \n-export function formatColor({ mode, color, alpha }) {\n+export function formatColor({ mode, color, alpha, variable }) {\n   let hasAlpha = alpha !== undefined\n+  if (mode === 'css-var') {\n+    return `${mode.replace('css-var', 'rgb')}(${variable}${hasAlpha ? ` / ${alpha}` : ''})` // rgb or rgba supported.\n+  }\n   return `${mode}(${color.join(' ')}${hasAlpha ? ` / ${alpha}` : ''})`\n }\n"
+    },
+    {
+        "instance_id": "tailwindlabs__tailwindcss-10212",
+        "model_name_or_path": "claude-3-5-sonnet-20240620",
+        "model_patch": "diff --git a/src/util/escapeClassName.js b/src/util/escapeClassName.js\nindex cb5924a9..940a0101 100644\n--- a/src/util/escapeClassName.js\n+++ b/src/util/escapeClassName.js\n@@ -4,5 +4,7 @@ import escapeCommas from './escapeCommas'\n export default function escapeClassName(className) {\n   let node = parser.className()\n   node.value = className\n-  return escapeCommas(node?.raws?.value ?? node.value)\n+  return escapeCommas(\n+    (node?.raws?.value ?? node.value).replace(/\\[/g, \"\\\\[\").replace(/]/g, \"\\\\]\")\n+  );\n }\n"
+    },
+    {
+        "instance_id": "prettier__prettier-12177",
+        "model_name_or_path": "claude-3-5-sonnet-20240620",
+        "model_patch": "diff --git a/src/language-js/printer-estree.js b/src/language-js/printer-estree.js\nindex ddb529f6b..5947b9066 100644\n--- a/src/language-js/printer-estree.js\n+++ b/src/language-js/printer-estree.js\n@@ -701,12 +701,20 @@ function printPathNoParens(path, options, print, args) {\n       );\n \n       if (consequent.length > 0) {\n-        const cons = printSwitchCaseConsequent(path, options, print);\n+        const cons = path.map(print, \"consequent\");\n+\n+        if (hasComment(node, CommentCheckFlags.Trailing)) {\n+           parts.push(\n+             \" \",\n+             printTrailingComments(path, options)\n+           );\n+        }\n+\n \n         parts.push(\n           consequent.length === 1 && consequent[0].type === \"BlockStatement\"\n-            ? [\" \", cons]\n-            : indent([hardline, cons])\n+            ? [\" \", ...cons] // Use spread to handle arrays correctly\n+            : indent([hardline, ...cons]) // Use spread to handle arrays correctly\n         );\n       }\n \n"
+    },
+    {
+        "instance_id": "statsmodels__statsmodels-7757",
+        "model_name_or_path": "claude-3-5-sonnet-20240620",
+        "model_patch": "diff --git a/statsmodels/miscmodels/ordinal_model.py b/statsmodels/miscmodels/ordinal_model.py\nindex 8eff75aab..ecef7b505 100644\n--- a/statsmodels/miscmodels/ordinal_model.py\n+++ b/statsmodels/miscmodels/ordinal_model.py\n@@ -131,6 +131,9 @@ class OrderedModel(GenericLikelihoodModel):\n         super(OrderedModel, self).__init__(endog, exog, **kwds)\n         k_levels = None  # initialize\n         if not is_pandas:\n+            if np.isnan(self.endog).any():\n+                raise ValueError(\"missing values in endog \"\n+                                 \"are not supported\")\n             if self.endog.ndim == 1:\n                 unique, index = np.unique(self.endog, return_inverse=True)\n                 self.endog = index\n"
+    }
+]

@@ -67,3 +67,4 @@ dmypy.json
 /omnigirl/harness/data
 /omnigirl/harness/run
 /omnigirl/harness/run_instance_logs
+/omnigirl/harness/reports
