@@ -24,38 +24,16 @@ MAP_REPO_TO_VERSION_PATHS = {
     'python/mypy': ['mypy/version.py'],
     'redis/redis-py': ['setup.py','redis/__init__.py'],
     'tqdm/tqdm': ['tqdm/_version.py'],
-    'urllib3/urllib3':['src/urllib3/_version.py','src/urllib3/__init__.py','urllib3/__init__.py'],
-    'microsoft/TypeScript':['package.json'],
-    'vercel/next.js':['package.json'],
-    'facebook/react':['package.json'],
-
     'prettier/prettier':['package.json'],
-    'eslint/eslint':['package.json'],
-    'Automattic/mongoose':['package.json'],
     'tailwindlabs/tailwindcss':['package.json'],
-    'vitejs/vite':['package.json'],
     'jestjs/jest':['lerna.json','package.json'],
-    'nodejs/undici':['package.json'],
-    'markedjs/marked':['package.json'],
-    'date-fns/date-fns':['package.json'],
     'webpack/webpack':['package.json'],
     'iamkun/dayjs':['CHANGELOG.md'],
-    'mochajs/mocha':['package.json'],
     'babel/babel':['package.json'],
     'statsmodels/statsmodels':['docs/source/release/index.rst'],
-    'jetty/jetty.project':['pom.xml'],
-    "h2database/h2database":['h2/pom.xml'],
     "assertj/assertj":['pom.xml'],
     "netty/netty":['pom.xml'],
-    "projectlombok/lombok":['doc/maven-pom.xml'],#动态插入
     "google/gson":['pom.xml'],
-    "junit-team/junit5":['gradle.properties'],
-    "ReactiveX/RxJava":['gradle.properties'],
-    "testng-team/testng":['gradle.properties'],
-    "apache/groovy":['gradle.properties'],
-    "square/retrofit":['gradle.properties'],
-    "spockframework/spock":['build.gradle'],
-    "square/okhttp":['build.gradle.kts']
 }
 
 # Cosntants - Task Instance Version Regex Pattern
@@ -77,7 +55,6 @@ MAP_REPO_TO_VERSION_PATTERNS = {
         "sphinx-doc/sphinx",
         "sympy/sympy",
         'python/mypy',
-        'urllib3/urllib3',
     ]
 }
 MAP_REPO_TO_VERSION_PATTERNS.update({
@@ -97,22 +74,11 @@ MAP_REPO_TO_VERSION_PATTERNS.update(
             
         ]
         for k in [
-            'microsoft/TypeScript',
-                    
-            'vercel/next.js',
-            'facebook/react',
 
             'prettier/prettier',
-            'eslint/eslint',
-            'Automattic/mongoose',
             'tailwindlabs/tailwindcss',
-            'vitejs/vite',
             'jestjs/jest',
-            'nodejs/undici',
-            'markedjs/marked',
-            'date-fns/date-fns',
             'webpack/webpack',
-            'mochajs/mocha',
             'babel/babel'
         ]
     }
@@ -124,51 +90,12 @@ MAP_REPO_TO_VERSION_PATTERNS.update({
     ]
     for k in [
         "netty/netty",
-        "jetty/jetty.project",
-        "h2database/h2database",
-        "projectlombok/lombok",
         "assertj/assertj",
         "google/gson"
         ]}
 )
 
-MAP_REPO_TO_VERSION_PATTERNS.update({
-    k:[
-      r'(?<=testng\.version=)(\d+(\.\d+)*)'
-    ]
-    for k in [
-            "testng-team/testng"     
-        ]}
-)
 
-MAP_REPO_TO_VERSION_PATTERNS.update({
-    k:[
-      r'(?:release\.version|version)\s*=\s*(\d+(\.\d+)*(-[A-Za-z0-9]+)*)'
-    ]
-    for k in [
-            "junit-team/junit5",  
-            "ReactiveX/RxJava"   
-        ]}
-)
-
-MAP_REPO_TO_VERSION_PATTERNS.update({
-    k:[
-      r'(?<=groovyVersion=)(\d+(\.\d+)*(-[A-Za-z0-9]+)*)'
-    ]
-    for k in [
-            "apache/groovy"    
-        ]}
-)
-
-
-MAP_REPO_TO_VERSION_PATTERNS.update({
-    k:[
-      r'VERSION_NAME\s*=\s*(\d+(\.\d+)*(-[A-Za-z0-9]+)*)'
-    ]
-    for k in [
-            "square/retrofit"      
-        ]}
-)
 
 MAP_REPO_TO_VERSION_PATTERNS.update(
     {
