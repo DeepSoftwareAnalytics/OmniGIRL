@@ -17,7 +17,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-def log_all_pulls(repo: Repo, output: str, mode: str,pr_data_list=None):
+def log_all_pulls(repo: Repo, output: str, mode: str, pr_data_list=None):
     """
     Iterate over all pull requests in a repository and log them to a file
 
@@ -25,16 +25,19 @@ def log_all_pulls(repo: Repo, output: str, mode: str,pr_data_list=None):
         repo (Repo): repository object
         output (str): output file name
     """
+    # Create output directory if it doesn't exist
+    output_dir = os.path.dirname(output)
+    if output_dir:
+        os.makedirs(output_dir, exist_ok=True)
+
     if mode == 'swebench':
-        with open(output, "w") as output:
+        with open(output, "w") as output_file:
             for pull in repo.get_all_pulls():
-                
                 setattr(pull, "resolved_issues", repo.extract_resolved_issues(pull))
-                print(json.dumps(obj2dict(pull)), end="\n", flush=True, file=output)
+                print(json.dumps(obj2dict(pull)), end="\n", flush=True, file=output_file)
     else:
         pulls = repo.get_all_pulls_with_official_github_api()
         print(f'total prs number: {len(pulls)}')
-        os.makedirs(output.replace('/prs.jsonl',''), exist_ok=True)
         with open(output, 'a') as f:
             for pull in tqdm(pulls):
                 if pr_data_list and pull['number'] in pr_data_list:
