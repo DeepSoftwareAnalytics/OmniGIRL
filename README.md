@@ -14,94 +14,36 @@ pip install -r requirements.txt
 
 ## 🚀 Running Evaluations
 
-### Evaluation on full set of OmniGIRL
-We provide evaluation results for three models—**GPT-4o-2024-08-06**, **DeepSeek-V2.5**, and **Claude-3.5-Sonnet-2024-06-25**—using two methods: **AgentlessX** and **Oracle Retrieval**. To access these results, execute the following scripts:
+After setup the environment, you need to do following things to run evaluation:
 
-#### GPT-4o-2024-08-06
+1. Prediction file: Some patch files in JSONL format, each item containing:
+   - `model_name_or_path`: Model Name
+   - `instance_id`: Task Instance id
+   - `prediction_patch`: Prediction Patch Content
 
-To evaluate the GPT-4o model:
+    Example:
+    ```json
+    {
+        "model_name_or_path": "agentless-v1",
+        "instance_id": "prettier__prettier-12260",
+        "fix_patch": "diff --git ...."
+    }
+    ```
+2. Dataset Files: Dataset files in JSON format available on omnigirl/harness/benchmark/OmniGIRL.json
 
-- **AgentlessX method**:
-  ```bash
-  cd omnigirl/harness
-  bash scripts/Eval_GPT4o_AgentlessX.sh
-  ```
+3. Move to omnigirl/harness, then you can run the evaluation using the following command:
 
-- **Oracle Retrieval method**:
-  ```bash
-  cd omnigirl/harness
-  bash scripts/Eval_GPT4o_OracleRetrieval.sh
-  ```
+```bash
+# required
+cd omnigirl/harness
 
-#### DeepSeek-V2.5
+python run_evaluation.py --dataset_name benchmark/OmniGIRL.json \
+                         --predictions_path <path of your prediction results> \
+                         --max_workers 15 \
+                         --run_id <unique id number of this evaluation>
+```
 
-To evaluate the DeepSeek model:
-
-- **AgentlessX method**:
-  ```bash
-  cd omnigirl/harness
-  bash scripts/Eval_DeepSeek_AgentlessX.sh
-  ```
-
-- **Oracle Retrieval method**:
-  ```bash
-  cd omnigirl/harness
-  bash scripts/Eval_DeepSeek_OracleRetrieval.sh
-  ```
-
-#### Claude-3.5-Sonnet-2024-06-25
-
-To evaluate the Claude model:
-
-- **AgentlessX method**:
-  ```bash
-  cd omnigirl/harness
-  bash scripts/Eval_Claude_AgentlessX.sh
-  ```
-
-- **Oracle Retrieval method**:
-  ```bash
-  cd omnigirl/harness
-  bash scripts/Eval_Claude_OracleRetrieval.sh
-  ```
-
-
-
-### Evaluation on subset with visual inputs
-
-In addition to the full set of OmniGIRL, we provide evaluation results for a subset of OmniGIRL with visual inputs. This subset contains 19 task instances. The experiments were conducted using **GPT-4o-2024-08-06** and **Claude-3.5-Sonnet-2024-06-25**, evaluated with both the **AgentlessX** and **Oracle Retrieval** methods. We evaluate LLMs under three different settings: **text-only**, **text&image** and **image-augmented text**. Each experiment was repeated **three times** to ensure robustness. Follow the steps below to run the experiments for each model and evaluation method:
-
-#### Claude-3.5-Sonnet-2024-06-25
-
-- **AgentlessX method**:
-
-  ```bash
-  cd omnigirl/harness
-  bash scripts/Eval_VisualSubset_Claude_AgentlessX.sh
-  ```
-
-- **Oracle Retrieval method**:
-
-  ```bash
-  cd omnigirl/harness
-  bash scripts/Eval_VisualSubset_Claude_OracleRetrieval.sh
-  ```
-
-#### GPT-4o-2024-08-06
-
-- **AgentlessX method**:
-
-  ```bash
-  cd omnigirl/harness
-  bash scripts/Eval_VisualSubset_GPT4o_AgentlessX.sh
-  ```
-
-- **Oracle Retrieval method**:
-
-  ```bash
-  cd omnigirl/harness
-  bash scripts/Eval_VisualSubset_GPT4o_OracleRetrieval.sh
-  ```
+4. By default, your evaluation results will be generated in omnigirl/harness/reports.
 
 ## 🙏 Acknowledgements
 - We build on prior work — **[SWE-bench](https://arxiv.org/abs/2310.06770)**, **[Agentless](https://arxiv.org/abs/2407.01489)**, and **[AutoCodeRover](https://arxiv.org/abs/2404.05427)** — which laid the groundwork for this study.
