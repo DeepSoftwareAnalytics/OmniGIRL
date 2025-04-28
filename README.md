@@ -103,3 +103,7 @@ In addition to the full set of OmniGIRL, we provide evaluation results for a sub
   bash scripts/Eval_VisualSubset_GPT4o_OracleRetrieval.sh
   ```
 
+## 🙏 Acknowledgements
+- We build on prior work — **[SWE-bench](https://arxiv.org/abs/2310.06770)**, **[Agentless](https://arxiv.org/abs/2407.01489)**, and **[AutoCodeRover](https://arxiv.org/abs/2404.05427)** — which laid the groundwork for this study.
+- We thank the **[EvalPlus leaderboard](https://github.com/evalplus/evalplus)** team for releasing the elegant page template that inspired this site.
+- Finally, we are grateful to the **open-source developer community** for their invaluable contributions.
