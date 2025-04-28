@@ -26,7 +26,7 @@ After setup the environment, you need to do following things to run evaluation:
     {
         "model_name_or_path": "agentless-v1",
         "instance_id": "prettier__prettier-12260",
-        "fix_patch": "diff --git ...."
+        "model_patch": "diff --git ...."
     }
     ```
 2. Dataset Files: Dataset files in JSON format available on omnigirl/harness/benchmark/OmniGIRL.json
