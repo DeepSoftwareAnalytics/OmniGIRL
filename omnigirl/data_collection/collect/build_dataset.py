@@ -26,7 +26,11 @@ def create_instance(repo: Repo, pull: dict, mode: str ='swebench') -> dict:
         test_patch (str): test suite as .patch (apply to base commit),
     }
     """
-    patch, test_patch = extract_patches(pull, repo)
+    try: 
+        patch, test_patch = extract_patches(pull, repo)
+    except Exception as e:
+        patch = ""
+        test_patch = ""
 
     
     if mode =='swebench':
