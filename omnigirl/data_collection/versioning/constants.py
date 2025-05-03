@@ -28,6 +28,7 @@ MAP_REPO_TO_VERSION_PATHS = {
     'tailwindlabs/tailwindcss':['package.json'],
     'jestjs/jest':['lerna.json','package.json'],
     'webpack/webpack':['package.json'],
+    'apollographql/apollo-client':['package.json'],
     'iamkun/dayjs':['CHANGELOG.md'],
     'babel/babel':['package.json'],
     'statsmodels/statsmodels':['docs/source/release/index.rst'],
@@ -79,7 +80,8 @@ MAP_REPO_TO_VERSION_PATTERNS.update(
             'tailwindlabs/tailwindcss',
             'jestjs/jest',
             'webpack/webpack',
-            'babel/babel'
+            'babel/babel',
+            'apollographql/apollo-client'
         ]
     }
 )

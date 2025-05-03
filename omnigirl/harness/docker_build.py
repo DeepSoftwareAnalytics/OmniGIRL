@@ -73,7 +73,8 @@ def build_image(
         platform: str,
         client: docker.DockerClient,
         build_dir: Path,
-        nocache: bool = False
+        from_hub: bool , 
+        nocache: bool = False,
     ):
     """
     Builds a docker image with the given name, setup scripts, dockerfile, and platform.
@@ -89,6 +90,29 @@ def build_image(
     """
     # Create a logger for the build process
     logger = setup_logger(image_name, build_dir / "build_image.log")
+
+    if from_hub:
+        try:
+            logger.info(f"[PULL] Trying to pull {image_name} from remote registry…")
+            remote_tag = image_name.replace('.', '_').replace(':', '_')
+            remote_image_name = f"guolianghong/omnigirl:{remote_tag}"
+
+            # 拉取远程镜像
+            pulled_image = client.images.pull(remote_image_name, platform=platform)
+
+            # 给它打上本地需要的 tag（恢复为 image_name）
+            client.images.get(pulled_image.id).tag(image_name)
+            logger.info(f"[TAG] Retagged pulled image as: {image_name}")
+
+            # 删除原 remote tag
+            client.images.remove(remote_image_name, force=True)
+            logger.info(f"[CLEANUP] Removed temporary tag: {remote_image_name}")
+
+            close_logger(logger)
+            return  # 成功拉取并转换，跳过构建
+        except Exception as e:
+            logger.warning(f"[WARN] Pull failed or retag failed: {e} – fallback to local build.")
+    logger.info("Fail to pull image from hub, try build to build the image locally")
     logger.info(
         f"Building image {image_name}\n"
         f"Using dockerfile:\n{dockerfile}\n"
@@ -157,6 +181,7 @@ def build_image(
 def build_base_images(
         client: docker.DockerClient,
         dataset: list,
+        from_hub: bool,
         force_rebuild: bool = False
     ):
     """
@@ -199,6 +224,7 @@ def build_base_images(
             platform=platform,
             client=client,
             build_dir=BASE_IMAGE_BUILD_DIR / image_name.replace(":", "__"),
+            from_hub=from_hub,
         )
     print("Base images built successfully.")
 
@@ -265,6 +291,7 @@ def get_env_configs_to_build(
 def build_env_images(
         client: docker.DockerClient,
         dataset: list,
+        from_hub: bool,
         force_rebuild: bool = False,
         max_workers: int = 4
     ):
@@ -283,7 +310,7 @@ def build_env_images(
         env_image_keys = {x.env_image_key for x in get_test_specs_from_dataset(dataset)}
         for key in env_image_keys:
             remove_image(client, key, "quiet")
-    build_base_images(client, dataset, force_rebuild)
+    build_base_images(client, dataset, from_hub, force_rebuild)
     configs_to_build = get_env_configs_to_build(client, dataset)
     if len(configs_to_build) == 0:
         print("No environment images need to be built.")
@@ -306,6 +333,7 @@ def build_env_images(
                     config["platform"],
                     client,
                     ENV_IMAGE_BUILD_DIR / image_name.replace(":", "__"),
+                    from_hub,
                 ): image_name
                 for image_name, config in configs_to_build.items()
             }
@@ -341,6 +369,7 @@ def build_env_images(
 def build_instance_images(
         client: docker.DockerClient,
         dataset: list,
+        from_hub: bool,
         force_rebuild: bool = False,
         max_workers: int = 4
     ):
@@ -359,7 +388,7 @@ def build_instance_images(
     if force_rebuild:
         for spec in test_specs:
             remove_image(client, spec.instance_image_key, "quiet")
-    _, env_failed = build_env_images(client, test_specs, force_rebuild, max_workers)
+    _, env_failed = build_env_images(client, test_specs, from_hub,force_rebuild, max_workers)
 
     if len(env_failed) > 0:
         # Don't build images for instances that depend on failed-to-build env images
@@ -381,6 +410,7 @@ def build_instance_images(
                     test_spec,
                     client,
                     None,  # logger is created in build_instance_image, don't make loggers before you need them
+                    from_hub,
                     False,
                 ): test_spec
                 for test_spec in test_specs
@@ -418,6 +448,7 @@ def build_instance_image(
         test_spec: TestSpec,
         client: docker.DockerClient,
         logger: logging.Logger,
+        from_hub: bool,
         nocache: bool,
     ):
     """
@@ -479,6 +510,7 @@ def build_instance_image(
             platform=test_spec.platform,
             client=client,
             build_dir=build_dir,
+            from_hub=from_hub,
             nocache=nocache,
         )
     else:
@@ -493,6 +525,7 @@ def build_container(
         client: docker.DockerClient,
         run_id: str,
         logger: logging.Logger,
+        from_hub: bool,
         nocache: bool,
         force_rebuild: bool = False
     ):
@@ -510,7 +543,7 @@ def build_container(
     # Build corresponding instance image
     if force_rebuild:
         remove_image(client, test_spec.instance_image_key, "quiet")
-    build_instance_image(test_spec, client, logger, nocache)
+    build_instance_image(test_spec, client, logger, from_hub, nocache)
 
     container = None
     try:

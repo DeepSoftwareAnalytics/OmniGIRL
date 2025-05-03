@@ -60,6 +60,7 @@ def run_instance(
         force_rebuild: bool,
         client: docker.DockerClient,
         run_id: str,
+        from_hub: bool,
         timeout: int|None = None,
     ):
     """
@@ -103,7 +104,7 @@ def run_instance(
     container = None
     try:
         # Build + start instance container (instance image should already be built)
-        container = build_container(test_spec, client, run_id, logger, rm_image, force_rebuild)
+        container = build_container(test_spec, client, run_id, logger, from_hub, rm_image, force_rebuild)
         container.start()
         # if 'redis' in run_id:
         #     client = DockerClient()
@@ -221,6 +222,7 @@ def run_instances(
         force_rebuild: bool,
         max_workers: int,
         run_id: str,
+        from_hub: bool,
         timeout: int,
     ):
     """
@@ -268,6 +270,7 @@ def run_instances(
                     force_rebuild,
                     client,
                     run_id,
+                    from_hub,
                     timeout,
                 ): None
                 for test_spec in test_specs
@@ -557,6 +560,7 @@ def main(
         timeout: int,
         version_spec: str,
         reports_dir: str,
+        from_hub: bool,
     ):
     """
     Run evaluation harness for the given dataset and predictions.
@@ -594,8 +598,8 @@ def main(
         print("No instances to run.")
     else:
         # build environment images + run instances
-        build_env_images(client, dataset, force_rebuild, max_workers)
-        run_instances(predictions, dataset, cache_level, clean, force_rebuild, max_workers, run_id, timeout)
+        build_env_images(client, dataset,from_hub, force_rebuild, max_workers)
+        run_instances(predictions, dataset, cache_level, clean, force_rebuild, max_workers, run_id, from_hub, timeout)
 
     # clean images + make final report
     clean_images(client, existing_images, cache_level, clean)
@@ -635,6 +639,13 @@ if __name__ == "__main__":
     parser.add_argument(
         "--reports_dir", type=str, default="reports", help="directory for saving reports"
         )
+    parser.add_argument(
+        "--from_hub",
+        type=str2bool,
+        default=True,
+        help="Whether to load the dataset from the HuggingFace Hub. If False, expects a local path."
+    )
+
     args = parser.parse_args()
 
     main(**vars(args))

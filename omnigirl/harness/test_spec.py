@@ -684,10 +684,6 @@ def make_test_spec(instance: SWEbenchInstance,language = 'python') -> TestSpec:
 
         return None
 
-
-        
-
-
     repo_script_list = make_repo_script_list(install, repo, repo_directory, base_commit, env_name)
     env_script_list = make_env_script_list(instance, install, env_name)
     eval_script_list = make_eval_script_list(
