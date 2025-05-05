@@ -615,7 +615,7 @@ if __name__ == "__main__":
     parser.add_argument("--max_workers", type=int, default=4, help="Maximum number of workers (should be <= 75%% of CPU cores)")
     parser.add_argument("--open_file_limit", type=int, default=4096, help="Open file limit")
     parser.add_argument(
-        "--timeout", type=int, default=1_800, help="Timeout (in seconds) for running tests for each instance"
+        "--timeout", type=int, default=3_600, help="Timeout (in seconds) for running tests for each instance"
         )
     parser.add_argument(
         "--force_rebuild", type=str2bool, default=False, help="Force rebuild of all images"
@@ -643,7 +643,7 @@ if __name__ == "__main__":
         "--from_hub",
         type=str2bool,
         default=True,
-        help="Whether to load the dataset from the HuggingFace Hub. If False, expects a local path."
+        help="Whether to load the images from the DockerHub. If False, we build image locally."
     )
 
     args = parser.parse_args()

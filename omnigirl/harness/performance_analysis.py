@@ -5,7 +5,8 @@ import datetime
 def analyze_data(mode,input_dir):
     with open('benchmark/OmniGIRL.json','r')as f:
         benchmark = json.load(f)
-
+    with open('benchmark/cross_file_instance_ids.json','r')as f:
+        cross_file_instance_ids = json.load(f)
 
 
     instance_id_list = [data['instance_id'] for data in benchmark]
@@ -15,6 +16,10 @@ def analyze_data(mode,input_dir):
         results = json.load(f)
     resolved_idx_list = results['resolved_ids']
     applied_idx_list = results['completed_ids']
+    cross_file_applied_num=0
+    cross_file_resolved_num=0
+    single_file_applied_num=0
+    single_file_resolved_num=0
     # repo_list = ['webpack','tailwindcss','jest','prettier','babel','dayjs','tqdm','statsmodels','redis-py','cryptography','mypy','dateutil','netty','gson','assertj']
     if mode == 'repository':
         repo_idx_dict={}
@@ -29,11 +34,21 @@ def analyze_data(mode,input_dir):
             repo = instance_id.split('-')[0].replace('__','/').strip()
             repo = repo.replace('/redis','/redis-py')
             repo_resolved_idx_dict.setdefault(repo, []).append(instance_id)
+            temp_instance_id = instance_id[:instance_id.find('_version')]
+            if temp_instance_id in cross_file_instance_ids['cross_file']:
+                cross_file_resolved_num+=1
+            elif temp_instance_id in cross_file_instance_ids['single_file'] :
+                single_file_resolved_num+=1
 
         for instance_id in applied_idx_list:
             repo = instance_id.split('-')[0].replace('__','/').strip()
             repo = repo.replace('/redis','/redis-py')
             repo_applied_idx_dict.setdefault(repo, []).append(instance_id)
+            temp_instance_id = instance_id[:instance_id.find('_version')]
+            if temp_instance_id in cross_file_instance_ids['cross_file']:
+                cross_file_applied_num+=1
+            elif temp_instance_id in cross_file_instance_ids['single_file'] :
+                single_file_applied_num+=1
 
         # print(repo_resolved_idx_dict)
 
@@ -88,14 +103,15 @@ def analyze_data(mode,input_dir):
         for k,v in pl_data_dict.items():
             data.append(v)
 
-            
+        data.append(['Cross File',len(cross_file_instance_ids['cross_file']),cross_file_resolved_num,cross_file_applied_num])
+        data.append(['Single File',len(cross_file_instance_ids['single_file']),single_file_resolved_num,single_file_applied_num])
         total_data = ['Total',len(instance_id_list),len(resolved_idx_list),len(applied_idx_list)]
         data.append(total_data)
         for d in data:
             d.append(d[2]/d[1])
             d.append(d[3]/d[1])
 
-        # 定义表头
+        
         headers = ["Repository", "Total Instance Numbers", "Resolved Instance Numbers","Applied Instance Numbers","Resolve Rate","Applied Rate"]
 
 
