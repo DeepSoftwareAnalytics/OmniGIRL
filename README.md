@@ -41,7 +41,9 @@ python run_evaluation.py --predictions_path <path of your prediction results> \
 
 3. By default, your evaluation results will be generated in omnigirl/harness/reports.
 
-4. For the detailed tutorial about evaluation, please refer to  [omnigirl/harness directory](../omnigirl/harness/README.md)
+4. For the detailed tutorial about evaluation, please refer to  [omnigirl/harness directory](../omnigirl/harness)
+
+5. Evaluation is recommended to be run on machines with amd64 architecture, consistent with the evaluation environment in the paper.
 
 ## 🙏 Acknowledgements
 - We build on prior work — **[SWE-bench](https://arxiv.org/abs/2310.06770)**, **[Agentless](https://arxiv.org/abs/2407.01489)**, and **[AutoCodeRover](https://arxiv.org/abs/2404.05427)** — which laid the groundwork for this study.
