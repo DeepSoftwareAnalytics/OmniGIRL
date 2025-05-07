@@ -67,7 +67,7 @@ If you find [OmniGIRL](https://deepsoftwareanalytics.github.io/omnigirl_leaderbo
 @inproceedings{guo2025omnigirl,
   title={OmniGIRL: A Multilingual and Multimodal Benchmark for GitHub Issue Resolution},
   author={Guo, Lianghong and Tao, Wei and Jiang, Runhan and Wang, Yanlin and Chen, Jiachi and Liu, Xilin and Ma, Yuchi and Mao, Mingzhi and Zhang, Hongyu and Zheng, Zibin},
-  booktitle={Proceedings of the 34th {ACM} {SIGSOFT} International Symposium on Software Testing and Analysis},
+  booktitle={Proceedings of the 34rd ACM SIGSOFT International Symposium on Software Testing and Analysis},
   year={2025},
   publisher={{ACM}},
 }
