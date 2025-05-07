@@ -10,17 +10,21 @@
 
 ## ✨ Key Features
 
-* 🚀 **Convenient, Standardized Evaluation Environment**:
+* 🚀 **Convenient, Standardized Evaluation Environment**
 
    [Provide Pre-built **Docker images**](https://hub.docker.com/r/guolianghong/omnigirl/tags), significantly simplifying the environment setup process and guaranteeing the **consistency and reproducibility** of evaluation tests.
 
-* 🕸 **Extensive Programming Language Coverage**:
+* 🕸 **Extensive Programming Language Coverage**
 
    Support **Python, Java, JavaScript, and TypeScript**, ensuring effective evaluation across these four major programming language ecosystems.
 
-* 🗂️ **Rich Multimodal Input Data**:
+* 🗂️ **Rich Multimodal Input Data**
 
    Integrate diverse modalities (text, web content, and images), requiring evaluated models to **understand and leverage** information from all sources **to effectively resolve issues**.
+
+* ⚒ **Automatic Environment Setup & Dataset Construction Tool** (will release before June 2025)
+
+  Automatically setup the executable environment and construct the dataset, accelerating the construction of the benchmark for the task, which is labor-intensive currently.
 
 ---
 
