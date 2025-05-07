@@ -1,6 +1,10 @@
-# OmniGIRL 
-A GitHub issue resolution benchmark with multi-aspect diversity across programming languages, repository domains, and modalities of input information.
+# OmniGIRL
 
+OmniGIRL is a GitHub issue resolution benchmark with multi-aspect diversity across programming languages, repository domains, and modalities of input information. It specifically highlights the following key features:
+
+* **Extensive Programming Language Coverage**: We provide comprehensive support for **Python, Java, JavaScript, and TypeScript**, ensuring effective evaluation across these four major programming language ecosystems.
+* **Rich Multimodal Input Data**: The dataset integrates diverse modalities, requiring evaluated models to **fully understand and leverage** information from text, web, and images **to effectively resolve issues**.
+* **Convenient, Standardized Evaluation Environment**: A pre-built **Docker image** is provided, significantly simplifying the environment setup process and guaranteeing the **consistency and reproducibility** of evaluation tests.
 
 ## 📦 Environment Setup
 
