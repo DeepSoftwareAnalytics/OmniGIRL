@@ -1,4 +1,6 @@
-# OmniGIRL
+[![SVG Banners](https://svg-banners.vercel.app/api?type=origin&text1=OmniGIRL%20🧑‍💻&text2=💖%20GitHub%20Issue%20Resolusion&width=900&height=200)](https://github.com/Akshay090/svg-banners)
+
+# 👉🏻 OmniGIRL 👈🏻
 
 OmniGIRL is a GitHub issue resolution benchmark with multi-aspect diversity across programming languages, repository domains, and modalities of input information. It specifically highlights the following key features:
 
