@@ -5,7 +5,7 @@
 
 Code and data for the following work:
 
-[ICLR 2025] [OmniGIRL: A Multilingual and Multimodal Benchmark for GitHub Issue Resolution](https://arxiv.org/abs/)
+[ISSTA 2025] [OmniGIRL: A Multilingual and Multimodal Benchmark for GitHub Issue Resolution](https://arxiv.org/abs/)
 
 ## ✨ Key Features
 
