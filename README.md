@@ -49,6 +49,20 @@ python run_evaluation.py --predictions_path <path of your prediction results> \
 
 5. Evaluation is recommended to be run on machines with amd64 architecture, consistent with the evaluation environment in the paper.
 
+## 📖 Citation
+If you find [OmniGIRL](https://deepsoftwareanalytics.github.io/omnigirl_leaderboard.html) useful for your research and applications, feel free to give us a star ⭐ or cite us using:
+
+```bibtex
+@inproceedings{guo2025omnigirl,
+  title={OmniGIRL: a multilingual and multimodal benchmark for {GitHub} issue resolution},
+  author={Guo, Lianghong and Tao, Wei and Jiang, Runhan and Wang, Yanlin and Chen, Jiachi and Liu, Xilin and Ma, Yuchi and Mao, Mingzhi and Zhang, Hongyu and Zheng, Zibin},
+  booktitle={Proceedings of the 34th {ACM} {SIGSOFT} International Symposium on Software Testing and Analysis},
+  pages={--}, % to be published
+  year={2025},
+  publisher={{ACM}},
+}
+```
+
 ## 🙏 Acknowledgements
 - We build on prior work — **[SWE-bench](https://arxiv.org/abs/2310.06770)**, **[Agentless](https://arxiv.org/abs/2407.01489)**, and **[AutoCodeRover](https://arxiv.org/abs/2404.05427)** — which laid the groundwork for this study.
 - We thank the **[EvalPlus leaderboard](https://github.com/evalplus/evalplus)** team for releasing the elegant page template that inspired this site.
