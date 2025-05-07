@@ -3,19 +3,20 @@
 
 # 👉🏻 OmniGIRL 👈🏻
 
-Code and data for the following work:
 
-[ISSTA 2025] [OmniGIRL: A Multilingual and Multimodal Benchmark for GitHub Issue Resolution](https://arxiv.org/abs/)
+🌐 <a href="https://deepsoftwareanalytics.github.io/omnigirl_leaderboard.html" target="_blank">Website</a>  •  🤗 <a href="https://huggingface.co/datasets/Deep-Software-Analytics/OmniGIRL" target="_blank">Hugging Face</a>  •  🐋 <a href="https://hub.docker.com/r/guolianghong/omnigirl/tags" target="_blank">Env Docker Image</a>  •   📃 <a href="https://arxiv.org/abs/" target="_blank">arXiv Paper</a> ·  📓 <a href="https://conf.researchr.org/details/issta-2025/issta-2025-papers/2/OmniGIRL-A-Multilingual-and-Multimodal-Benchmark-for-GitHub-Issue-Resolution" target="_blank">ISSTA 2025</a>  
+
+
 
 ## ✨ Key Features
 
-OmniGIRL specifically highlights the following key features:
+* 🚀 **Convenient, Standardized Evaluation Environment**: A pre-built **Docker image** is provided, significantly simplifying the environment setup process and guaranteeing the **consistency and reproducibility** of evaluation tests.
 
-* **Extensive Programming Language Coverage**: We provide comprehensive support for **Python, Java, JavaScript, and TypeScript**, ensuring effective evaluation across these four major programming language ecosystems.
+* 🕸 **Extensive Programming Language Coverage**: We provide comprehensive support for **Python, Java, JavaScript, and TypeScript**, ensuring effective evaluation across these four major programming language ecosystems.
 
-* **Rich Multimodal Input Data**: The dataset integrates diverse modalities (text, web content, and images), requiring evaluated models to **understand and leverage** information from all sources **to effectively resolve issues**.
+* 🗂️ **Rich Multimodal Input Data**: The dataset integrates diverse modalities (text, web content, and images), requiring evaluated models to **understand and leverage** information from all sources **to effectively resolve issues**.
 
-* **Convenient, Standardized Evaluation Environment**: A pre-built **Docker image** is provided, significantly simplifying the environment setup process and guaranteeing the **consistency and reproducibility** of evaluation tests.
+
 
 ## 📦 Environment Setup
 
@@ -45,14 +46,14 @@ After setup the environment, you need to do following things to run evaluation:
 
 2. Move to omnigirl/harness, then you can run the evaluation using the following command:
 
-```bash
-# required
-cd omnigirl/harness
-
-python run_evaluation.py --predictions_path <path of your prediction results> \
-                         --max_workers <number of workers> \
-                         --run_id <unique id number of this evaluation>
-```
+   ```bash
+   # required
+   cd omnigirl/harness
+   
+   python run_evaluation.py --predictions_path <path of your prediction results> \
+                            --max_workers <number of workers> \
+                            --run_id <unique id number of this evaluation>
+   ```
 
 3. By default, your evaluation results will be generated in omnigirl/harness/reports.
 
@@ -61,6 +62,7 @@ python run_evaluation.py --predictions_path <path of your prediction results> \
 5. Evaluation is recommended to be run on machines with amd64 architecture, consistent with the evaluation environment in the paper.
 
 ## 📖 Citation
+
 If you find [OmniGIRL](https://deepsoftwareanalytics.github.io/omnigirl_leaderboard.html) useful for your research and applications, feel free to give us a star ⭐ or cite us using:
 
 ```bibtex
