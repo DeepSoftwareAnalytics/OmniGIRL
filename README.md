@@ -10,13 +10,19 @@
 
 ## ✨ Key Features
 
-* 🚀 **Convenient, Standardized Evaluation Environment**: A pre-built **Docker image** is provided, significantly simplifying the environment setup process and guaranteeing the **consistency and reproducibility** of evaluation tests.
+* 🚀 **Convenient, Standardized Evaluation Environment**:
 
-* 🕸 **Extensive Programming Language Coverage**: We provide comprehensive support for **Python, Java, JavaScript, and TypeScript**, ensuring effective evaluation across these four major programming language ecosystems.
+   [Provide Pre-built **Docker images**](https://hub.docker.com/r/guolianghong/omnigirl/tags), significantly simplifying the environment setup process and guaranteeing the **consistency and reproducibility** of evaluation tests.
 
-* 🗂️ **Rich Multimodal Input Data**: The dataset integrates diverse modalities (text, web content, and images), requiring evaluated models to **understand and leverage** information from all sources **to effectively resolve issues**.
+* 🕸 **Extensive Programming Language Coverage**:
 
+   Support **Python, Java, JavaScript, and TypeScript**, ensuring effective evaluation across these four major programming language ecosystems.
 
+* 🗂️ **Rich Multimodal Input Data**:
+
+   Integrate diverse modalities (text, web content, and images), requiring evaluated models to **understand and leverage** information from all sources **to effectively resolve issues**.
+
+---
 
 ## 📦 Environment Setup
 
