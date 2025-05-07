@@ -1,14 +1,19 @@
 [![SVG Banners](https://svg-banners.vercel.app/api?type=origin&text1=OmniGIRL%20🧑‍💻&text2=💖%20GitHub%20Issue%20Resolusion&width=900&height=200)](https://github.com/Akshay090/svg-banners)
 
+
 # 👉🏻 OmniGIRL 👈🏻
 
-Code and data for the following works:
-* [ICLR 2025] <a href="https://arxiv.org/abs/">OmniGIRL: A Multilingual and Multimodal Benchmark for GitHub Issue Resolution</a>
+Code and data for the following work:
+
+[ICLR 2025] [OmniGIRL: A Multilingual and Multimodal Benchmark for GitHub Issue Resolution](https://arxiv.org/abs/)
+
+## ✨ Key Features
+
 OmniGIRL specifically highlights the following key features:
 
 * **Extensive Programming Language Coverage**: We provide comprehensive support for **Python, Java, JavaScript, and TypeScript**, ensuring effective evaluation across these four major programming language ecosystems.
 
-* **Rich Multimodal Input Data**: The dataset integrates diverse modalities, requiring evaluated models to **fully understand and leverage** information from text, web, and images **to effectively resolve issues**.
+* **Rich Multimodal Input Data**: The dataset integrates diverse modalities (text, web content, and images), requiring evaluated models to **understand and leverage** information from all sources **to effectively resolve issues**.
 
 * **Convenient, Standardized Evaluation Environment**: A pre-built **Docker image** is provided, significantly simplifying the environment setup process and guaranteeing the **consistency and reproducibility** of evaluation tests.
 
