@@ -4,7 +4,7 @@
 # 👉🏻 OmniGIRL 👈🏻
 
 
-🌐 <a href="https://deepsoftwareanalytics.github.io/omnigirl_leaderboard.html" target="_blank">Website</a>  •  🤗 <a href="https://huggingface.co/datasets/Deep-Software-Analytics/OmniGIRL" target="_blank">Hugging Face</a>  •  🐋 <a href="https://hub.docker.com/r/guolianghong/omnigirl/tags" target="_blank">Env Docker Image</a>  •   📃 <a href="https://arxiv.org/abs/" target="_blank">arXiv Paper</a> ·  📓 <a href="https://conf.researchr.org/details/issta-2025/issta-2025-papers/2/OmniGIRL-A-Multilingual-and-Multimodal-Benchmark-for-GitHub-Issue-Resolution" target="_blank">ISSTA 2025</a>  
+🌐 <a href="https://deepsoftwareanalytics.github.io/omnigirl_leaderboard.html" target="_blank">Website</a>  •  🤗 <a href="https://huggingface.co/datasets/Deep-Software-Analytics/OmniGIRL" target="_blank">Hugging Face</a>  •  🐋 <a href="https://hub.docker.com/r/guolianghong/omnigirl/tags" target="_blank">Env Docker Image</a>  •   📃 <a href="http://arxiv.org/abs/2505.04606" target="_blank">arXiv Paper</a> ·  📓 <a href="https://conf.researchr.org/details/issta-2025/issta-2025-papers/2/OmniGIRL-A-Multilingual-and-Multimodal-Benchmark-for-GitHub-Issue-Resolution" target="_blank">ISSTA 2025</a>  
 
 
 
