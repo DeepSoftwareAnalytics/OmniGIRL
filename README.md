@@ -22,9 +22,12 @@
 
    Integrate diverse modalities (text, web content, and images), requiring evaluated models to **understand and leverage** information from all sources **to effectively resolve issues**.
 
-* ⚒ **Automatic Environment Setup & Dataset Construction Tool** (will release before June 2025)
+* ⚒ **Automatic Environment Setup & Dataset Construction Tool** 
 
-  Automatically setup the executable environment and construct the dataset, accelerating the construction of the benchmark for the task, which is labor-intensive currently.
+  We introduces **SWE-collector**, an automatic issue-resolution benchmark generation method based on a multi-agent framework. For more information and the full source code, visit: [SWE-collector](https://github.com/DeepSoftwareAnalytics/swe-collector).
+
+
+
 
 ---
 
