@@ -24,7 +24,7 @@
 
 * ⚒ **Automatic Environment Setup & Dataset Construction Tool** 
 
-  We introduce **SWE-collector**, an automatic issue-resolution benchmark generation method based on a multi-agent framework. For more information and the full source code, visit: [SWE-collector](https://github.com/DeepSoftwareAnalytics/swe-collector).
+  We introduce **SWE-Factory**, an automatic issue-resolution benchmark construction pipeline based on a multi-agent framework. For more information and the full source code, visit: [SWE-Factory](https://github.com/DeepSoftwareAnalytics/swe-factory).
 
 
 
